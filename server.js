@@ -17,7 +17,10 @@ db.sequelize.sync(); //normal sync with the database
 // db.sequelize.sync({force: false, alter:true});
 
 const tutorialRouter = require('./routes/tutorials/tutorial_route');
+const commentRouter = require('./routes/comments/comments_route');
+
 app.use('/api/tutorials', tutorialRouter);
+app.use('/api/comments', commentRouter);
 
 app.use(cors);
 app.use(express.urlencoded({extended: true}));

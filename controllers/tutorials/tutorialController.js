@@ -38,6 +38,21 @@ const getTutorials = ((req, res) =>{
     });
 });
 
+//get all tutorial with comments
+const getTutorialsComments = ((req, res) =>{
+    Tutorial.findAll({
+        include: ['comments']
+    }).then(tutorials => {
+        console.log(tutorials);
+        res.status(200).send(tutorials)
+    }).catch(error => {
+        console.log(error);
+        res.status(400).send({
+            message: error.message || "An error cocured"
+        });
+    })
+})
+
 //get tutorial by Id
 const getTutotorialById = (req, res) =>{
     const id = req.params.id;
@@ -120,6 +135,7 @@ const deleteAll = (req, res) =>{
 
 module.exports = {
     getTutorials,
+    getTutorialsComments,
     findPublishedTuts,
     getTutotorialById,
     updateTutorial,

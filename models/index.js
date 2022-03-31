@@ -15,5 +15,11 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {}
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+db.comments = require('../models/customer_model.js')(sequelize, Sequelize);
 db.tutorials = require('../models/tutorial_model.js')(sequelize, Sequelize);
+db.tutorials.hasMany(db.comments, {as: 'comments'});
+db.comments.belongsTo(db.tutorials, {
+    foreignKey: 'tutorialId',
+    as: 'tutorial'
+})
 module.exports = db;

@@ -4,6 +4,7 @@ const tutorials = require('../../controllers/tutorials/tutorialController');
 
 
 router.get('/', tutorials.getTutorials);
+router.get('/tuts_comments', tutorials.getTutorialsComments);
 router.get('/published', tutorials.findPublishedTuts);
 router.get('/:id', tutorials.getTutotorialById);
 router.put('/:id', tutorials.updateTutorial);
