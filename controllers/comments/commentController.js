@@ -1,6 +1,5 @@
 const { comments } = require('../../models/index');
 const db = require('../../models/index');
-const { getTutorialsComments } = require('../tutorials/tutorialController');
 const Comment = db.comments;
 
 
