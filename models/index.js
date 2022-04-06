@@ -19,6 +19,24 @@ db.comments = require('../models/customer_model.js')(sequelize, Sequelize);
 db.tutorials = require('../models/tutorial_model.js')(sequelize, Sequelize);
 db.images = require('../models/image_model')(sequelize, Sequelize);
 db.tags = require('../models/tag_model')(sequelize, Sequelize);
+db.roles = require('../models/role_model.js')(sequelize, Sequelize);
+db.users = require('../models/auth_model.js')(sequelize, Sequelize);
+
+db.roles.belongsToMany(db.users, {
+    through: 'users_roles',
+    foreignKey: 'roleId',
+    otherKey: 'userId'
+
+});
+
+db.users.belongsToMany(db.roles, {
+    through: 'users_roles',
+    foreignKey: 'userId',
+    otherKey: 'roleId'
+});
+
+db.ROLES = ['user', 'admin', 'moderator']; //Roles list
+
 db.tags.belongsToMany(db.tutorials, {
     through: "tutorial_tag",
     as: "tutorials",
