@@ -24,12 +24,16 @@ const commentRouter = require('./routes/comments/comments_route');
 const tagRouter = require('./routes/tag/tag_route');
 const imageRouter = require('./routes/images/images_route');
 const roleRouter = require('./routes/roles/roles_route');
+const signUpRouter = require('./routes/auth/signup_route');
+const signInRouter = require('./routes/auth/login_route');
 
 app.use('/api/tutorials', tutorialRouter);
 app.use('/api/comments', commentRouter);
 app.use('/api/tags', tagRouter);
 app.use('/api/images', imageRouter);
 app.use('/api/roles', roleRouter);
+app.use('/api/', signUpRouter);
+app.use('/api/', signInRouter);
 
 app.use(cors);
 app.use(express.urlencoded({extended: true}));

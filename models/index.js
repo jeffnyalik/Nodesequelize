@@ -35,7 +35,7 @@ db.users.belongsToMany(db.roles, {
     otherKey: 'roleId'
 });
 
-db.ROLES = ['user', 'admin', 'moderator']; //Roles list
+db.ROLES = ['user', 'admin', 'moderator',]; //Roles list
 
 db.tags.belongsToMany(db.tutorials, {
     through: "tutorial_tag",
